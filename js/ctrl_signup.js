@@ -59,7 +59,7 @@ $form.addEventListener('submit', async e => {
         delete popup;
     }
 
-    window.location.href = '../public/index.html';
+    window.location.href = '../index.html';
 });
 
 async function getImage(file) {
