@@ -1,13 +1,13 @@
 function Popup(text, okCallback, okParams, cancelCallback, cancelParams) {
 
     this.display = () => {
-
-        if (this.displayed) return;
+        
+        if(this.displayed) return;
 
         this.displayed = true;
-
+        
         this.$popupCtnr = document.createElement('div');
-
+        
         document.body.appendChild(this.$popupCtnr);
 
         const popupStyle = {
@@ -24,22 +24,22 @@ function Popup(text, okCallback, okParams, cancelCallback, cancelParams) {
             transform: 'scale(0)'
         };
 
-        for (prop in popupStyle) {
+        for(prop in popupStyle) {
             this.$popupCtnr.style[prop] = popupStyle[prop];
         }
-
+        
         this.show();
-
+    
         $popupMsgCtnr = document.createElement('h6');
         $popupMsgCtnr.innerHTML = text;
         this.$popupCtnr.appendChild($popupMsgCtnr);
-
+    
         const $btnsCtnr = document.createElement('div');
         $btnsCtnr.style.display = 'flex';
         $btnsCtnr.style.justifyContent = 'center';
-        $btnsCtnr.style.margin = '20px auto';
+        $btnsCtnr.style.margin = '20px auto'; 
         this.$popupCtnr.appendChild($btnsCtnr);
-
+    
         const $okBtnCtnr = document.createElement('button');
         $okBtnCtnr.style.backgroundColor = '#305ebb';
         $okBtnCtnr.style.color = 'white';
@@ -50,16 +50,16 @@ function Popup(text, okCallback, okParams, cancelCallback, cancelParams) {
         $okBtnCtnr.style.height = '30px';
         $okBtnCtnr.innerText = 'Ok';
         $btnsCtnr.appendChild($okBtnCtnr);
-
-
+        
+        
         $okBtnCtnr.addEventListener('click', () => {
-            if (okCallback) {
+            if(okCallback) {
                 okCallback(okParams);
             }
             this.hide();
         });
-
-        if (cancelCallback) {
+        
+        if(cancelCallback) {
             const $cancelBtnCtnr = document.createElement('button');
             $cancelBtnCtnr.style.backgroundColor = '#dd5159';
             $cancelBtnCtnr.style.color = 'white';
@@ -70,12 +70,12 @@ function Popup(text, okCallback, okParams, cancelCallback, cancelParams) {
             $cancelBtnCtnr.style.height = '30px';
             $cancelBtnCtnr.innerText = 'Annuler';
             $btnsCtnr.appendChild($cancelBtnCtnr);
-
+    
             $cancelBtnCtnr.addEventListener('click', () => {
                 cancelCallback(cancelParams);
                 this.hide();
             });
-        }
+        } 
     };
 
     this.show = () => {
@@ -84,19 +84,19 @@ function Popup(text, okCallback, okParams, cancelCallback, cancelParams) {
             size += 0.1;
             this.$popupCtnr.style.transform = `scale(${size})`;
 
-            if (size >= 1) {
+            if(size >= 1) {
                 window.clearInterval(interval);
             }
         }, 20);
     };
-
+    
     this.hide = () => {
         let size = 1;
         let interval = window.setInterval(() => {
             size -= 0.1;
             this.$popupCtnr.style.transform = `scale(${size})`;
 
-            if (size <= 0) {
+            if(size <= 0) {
                 window.clearInterval(interval);
                 this.displayed = false;
                 document.body.removeChild(this.$popupCtnr);

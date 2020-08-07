@@ -2,8 +2,8 @@
 
 body {
     #main-ctnr {
-        @include borderImage(rgba(48, 94, 187, 0.5), rgba(221, 81, 89, 0.5));
-    }
+        @include borderImage(rgba(48, 94, 187,0.5), rgba(221, 81, 89,0.5));
+    } 
 }
 
 #fb-connect-btn {

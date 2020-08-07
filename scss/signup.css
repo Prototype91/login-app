@@ -28,7 +28,6 @@ body #main-ctnr {
 
 #form-ctnr form {
   width: 320px;
-  height: 500px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -56,8 +55,7 @@ body #main-ctnr {
   left: 10px;
 }
 
-#form-ctnr form button,
-#form-ctnr form input {
+#form-ctnr form button, #form-ctnr form input {
   border: none;
 }
 
